@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const ExpFoodsNation = () => (
   <div>
-    Explorar nacionalidade
+    <Header title="Explore Nationalities" search />
   </div>
 );
 
