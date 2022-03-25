@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import SearchIcon from '../images/searchIcon.svg';
 import { filterByIngredient, filterByLetter, filterByName } from '../services/MealsAPI';
+import { filterByDrinkIngredient,
+  filterByDrinkLetter, filterByDrinkName } from '../services/DrinksAPI';
+import MyContext from '../context/MyContext';
 
 const Header = ({ title, search }) => {
+  const { setsearchValues } = useContext(MyContext);
+  const { url } = useRouteMatch();
   const history = useHistory();
   const [displaySearch, setdisplaySearch] = useState(false);
   const [itemCheck, setitemCheck] = useState('');
@@ -17,24 +22,55 @@ const Header = ({ title, search }) => {
     setitemCheck(target.id);
   };
 
+  const filter = async (func, input) => {
+    const result = await func(input);
+    setsearchValues(result);
+  };
+
+  const switchFoods = () => {
+    switch (itemCheck) {
+    case 'ingredient':
+      return filter(filterByIngredient, inputText);
+
+    case 'name':
+      return filter(filterByName, inputText);
+
+    case 'letter':
+      return inputText.length === 1
+        ? filter(filterByLetter, inputText)
+        : global.alert('Your search must have only 1 (one) character');
+
+    default:
+          // console.log('');
+    }
+  };
+
+  const switchDrinks = () => {
+    switch (itemCheck) {
+    case 'ingredient':
+      return filter(filterByDrinkIngredient, inputText);
+
+    case 'name':
+      return filter(filterByDrinkName, inputText);
+
+    case 'letter':
+      return inputText.length === 1
+        ? filter(filterByDrinkLetter, inputText)
+        : global.alert('Your search must have only 1 (one) character');
+
+    default:
+              // console.log('');
+    }
+  };
+
   const inputName = ({ target }) => (setinputText(target.value));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    switch (itemCheck) {
-    case 'ingredient':
-      filterByIngredient(inputText);
-      break;
-    case 'name':
-      filterByName(inputText);
-      break;
-    case 'letter':
-      return inputText.length === 1
-        ? filterByLetter(inputText)
-        : global.alert('Your search must have only 1 (one) character');
-
-    default:
-      // console.log('');
+    if (url.includes('foods')) {
+      switchFoods();
+    } else {
+      switchDrinks();
     }
   };
 

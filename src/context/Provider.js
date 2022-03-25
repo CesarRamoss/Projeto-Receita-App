@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import MyContext from './MyContext';
 
 const Provider = ({ children }) => {
-  const value = {};
+  const [searchValues, setsearchValues] = useState([]);
+  const value = {
+    searchValues,
+    setsearchValues,
+  };
 
   return (
     <MyContext.Provider value={ value }>
