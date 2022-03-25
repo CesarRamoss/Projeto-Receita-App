@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MyContext from '../context/MyContext';
 
@@ -27,6 +28,7 @@ const Foods = () => {
 
       {searchValues === null
     && global.alert('Sorry, we haven\'t found any recipes for these filters.')}
+      <Footer />
     </div>
   );
 };
