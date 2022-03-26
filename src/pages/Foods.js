@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import Buttons from '../components/Buttons';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -8,6 +8,7 @@ import { filterByName } from '../services/MealsAPI';
 
 const Foods = () => {
   const LENGTH_ARRAY = 12;
+  const history = useHistory();
   const { searchValues, setsearchValues } = useContext(MyContext);
 
   const renderInitialFoods = async () => {
@@ -28,12 +29,17 @@ const Foods = () => {
 
       {searchValues != null && searchValues.length > 1
     && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
-      <div key={ card.idMeal } data-testid={ `${index}-recipe-card` }>
+      <div
+        key={ card.idMeal }
+        data-testid={ `${index}-recipe-card` }
+      >
         <p data-testid={ `${index}-card-name` }>{card.strMeal}</p>
-        <img
+        <input
+          type="image"
           src={ card.strMealThumb }
           alt={ card.strMeal }
           data-testid={ `${index}-card-img` }
+          onClick={ () => history.push(`foods/${card.idMeal}`) }
         />
       </div>
     ))}
@@ -42,7 +48,8 @@ const Foods = () => {
        && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
          <div key={ card.idMeal } data-testid={ `${index}-recipe-card` }>
            <p data-testid={ `${index}-card-name` }>{card.strMeal}</p>
-           <img
+           <input
+             type="image"
              src={ card.strMealThumb }
              alt={ card.strMeal }
              data-testid={ `${index}-card-img` }
