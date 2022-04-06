@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import Icons from '../components/Icons';
 import Recomendations from '../components/Recomendations';
 import MyContext from '../context/MyContext';
@@ -10,6 +10,7 @@ const DrinksDetails = () => {
   const [ingredient, setingredient] = useState([]);
   const [measure, setmeasure] = useState([]);
   const { params } = useRouteMatch();
+  const history = useHistory();
 
   const filterAllIngredients = () => {
     searchValues.map((item) => {
@@ -57,7 +58,7 @@ const DrinksDetails = () => {
           <p data-testid="recipe-title">{card.strDrink}</p>
           <p data-testid="recipe-category">{card.strAlcoholic}</p>
           <Icons />
-          <p>Ingredients</p>
+          <h4>Ingredients</h4>
           <ul>
             {ingredient.filter((item) => item !== null && item.length > 0)
               .map((ingred, index) => (
@@ -76,6 +77,7 @@ const DrinksDetails = () => {
                 </li>
               ))}
           </ul>
+          <h4>Instructions</h4>
           <p data-testid="instructions">{card.strInstructions}</p>
 
         </div>
@@ -85,6 +87,7 @@ const DrinksDetails = () => {
         type="button"
         style={ { position: 'fixed', bottom: '0' } }
         data-testid="start-recipe-btn"
+        onClick={ () => history.push(`/drinks/${params.id}/in-progress`) }
       >
         Start Recipe
         {' '}

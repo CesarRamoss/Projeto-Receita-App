@@ -31,7 +31,7 @@ const Recomendations = () => {
           .map((card, index) => (
             <figure
               key={ card.idMeal }
-              style={ { margin: '0' } }
+              style={ { margin: '0 0 40px' } }
               data-testid={ `${index}-recomendation-card` }
             >
               <input
@@ -53,7 +53,7 @@ const Recomendations = () => {
           .map((card, index) => (
             <figure
               key={ card.idDrink }
-              style={ { margin: '0' } }
+              style={ { margin: '0 0 40px' } }
               data-testid={ `${index}-recomendation-card` }
             >
               <input

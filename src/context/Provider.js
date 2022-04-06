@@ -4,9 +4,15 @@ import MyContext from './MyContext';
 
 const Provider = ({ children }) => {
   const [searchValues, setsearchValues] = useState([]);
+  const [doneRecipes, setdoneRecipes] = useState([]);
+  const [recipeinprogress, setrecipeinprogress] = useState([]);
   const value = {
     searchValues,
     setsearchValues,
+    doneRecipes,
+    setdoneRecipes,
+    recipeinprogress,
+    setrecipeinprogress,
   };
 
   return (
