@@ -58,6 +58,17 @@ const FoodsInProgress = () => {
     setsearchValues(result);
   };
 
+  const saveRecipes = () => {
+    if (JSON.parse(localStorage.getItem('doneRecipes'))) {
+      const itens = JSON.parse(localStorage.getItem('doneRecipes'));
+      const allItens = [...itens, searchValues[0]];
+      localStorage.setItem('doneRecipes', JSON.stringify(allItens));
+    } else {
+      localStorage.setItem('doneRecipes', JSON.stringify(searchValues));
+    }
+    history.push('/done-recipes');
+  };
+
   useEffect(() => {
     filterAllIngredients();
     filterAllMeasures();
@@ -111,7 +122,7 @@ const FoodsInProgress = () => {
         style={ { position: 'fixed', bottom: '0' } }
         data-testid="finish-recipe-btn"
         disabled={ toggleButton }
-        onClick={ () => history.push('/done-recipes') }
+        onClick={ saveRecipes }
       >
         Finish Recipe
         {' '}
