@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, useHistory } from 'react-router-dom';
 import { filterByDrinkName } from '../services/DrinksAPI';
 import { filterByName } from '../services/MealsAPI';
 
@@ -7,6 +7,7 @@ const Recomendations = () => {
   const MAX_CARROUSEL = 6;
   const { url } = useRouteMatch();
   const [recomended, setrecomended] = useState([]);
+  const history = useHistory();
 
   const recomendedFoods = async () => {
     const result = await filterByName('');
@@ -23,7 +24,7 @@ const Recomendations = () => {
 
   return (
     <div>
-      <p>Recommended</p>
+      <h4>Recommended</h4>
       <div
         style={ { display: 'flex', overflow: 'auto' } }
       >
@@ -39,6 +40,7 @@ const Recomendations = () => {
                 type="image"
                 alt={ card.idMeal }
                 src={ card.strMealThumb }
+                onClick={ () => history.push(`/foods/${card.idMeal}`) }
               />
               <figcaption
                 data-testid={ `${index}-recomendation-title` }
@@ -61,6 +63,7 @@ const Recomendations = () => {
                 type="image"
                 alt={ card.idDrink }
                 src={ card.strDrinkThumb }
+                onClick={ () => history.push(`/drinks/${card.idDrink}`) }
               />
               <figcaption
                 data-testid={ `${index}-recomendation-title` }

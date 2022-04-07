@@ -34,7 +34,7 @@ const FoodsDetails = () => {
 
   const replaceVideo = (link) => {
     const re = '/watch?v=';
-    const string = link.replace(re, '/embed/');
+    const string = link !== undefined && link.replace(re, '/embed/');
     return string;
   };
 

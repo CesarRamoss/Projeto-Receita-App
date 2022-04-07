@@ -39,7 +39,7 @@ const Foods = () => {
           src={ card.strMealThumb }
           alt={ card.strMeal }
           data-testid={ `${index}-card-img` }
-          onClick={ () => history.push(`foods/${card.idMeal}`) }
+          onClick={ () => history.push(`/foods/${card.idMeal}`) }
         />
       </div>
     ))}
