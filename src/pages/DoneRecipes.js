@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 
 const DoneRecipes = () => {
   const [favorites, setfavorites] = useState([]);
   const [originalStorage, setoriginalStorage] = useState([]);
+  const history = useHistory();
 
   const renderDetails = () => {
     const favoriteStorage = JSON.parse(localStorage.getItem('doneRecipes'));
@@ -29,6 +31,10 @@ const DoneRecipes = () => {
     });
   };
 
+  const redirectTo = (id) => (id[0] === '1'
+    ? history.push(`/drinks/${id}`)
+    : history.push(`/foods/${id}`));
+
   useEffect(() => {
     renderDetails();
   }, []);
@@ -43,7 +49,12 @@ const DoneRecipes = () => {
       </section>
       {favorites.map((item, index) => (
         <div key={ index }>
-          <img src={ item.strMealThumb || item.strDrinkThumb } alt="recipe" />
+          <input
+            type="image"
+            src={ item.strMealThumb || item.strDrinkThumb }
+            alt="recipe"
+            onClick={ () => redirectTo(item.idDrink || item.idMeal) }
+          />
           <p>{item.strMeal || item.strDrink}</p>
           <p>{item.strCategory}</p>
           <p>{item.strArea || item.strAlcoholic}</p>

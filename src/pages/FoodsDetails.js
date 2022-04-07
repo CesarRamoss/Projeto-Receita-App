@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import '../css/Details.css';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import Icons from '../components/Icons';
 import Recomendations from '../components/Recomendations';
@@ -57,49 +58,55 @@ const FoodsDetails = () => {
       { searchValues.map((card) => (
         <div key={ card.idMeal }>
           <img
+            className="img_details"
             data-testid="recipe-photo"
             alt={ card.idMeal }
             src={ card.strMealThumb }
           />
-          <p data-testid="recipe-title">{card.strMeal}</p>
-          <p data-testid="recipe-category">{card.strCategory}</p>
-          <Icons />
-          <h4>Ingredients</h4>
-          <ul>
-            {ingredient.filter((item) => item !== null && item.length > 0)
-              .map((ingred, index) => (
-                <li
-                  key={ index }
-                  data-testid={ `${index}-ingredient-name-and-measure` }
-                >
-                  {ingred}
-                  {' '}
-                  -
-                  <span data-testid={ `${index}-ingredient-name-and-measure` }>
-                    {measure[index]}
+          <div className="main_details">
+            <h2 data-testid="recipe-title">{card.strMeal}</h2>
+            <div className="title_details">
+              <p data-testid="recipe-category">{card.strCategory}</p>
+              <Icons />
+            </div>
+            <h4>Ingredients</h4>
+            <ul className="ingredient_details">
+              {ingredient.filter((item) => item !== null && item.length > 0)
+                .map((ingred, index) => (
+                  <li
+                    key={ index }
+                    data-testid={ `${index}-ingredient-name-and-measure` }
+                  >
+                    {ingred}
+                    {' '}
+                    -
+                    <span data-testid={ `${index}-ingredient-name-and-measure` }>
+                      {measure[index]}
 
-                  </span>
+                    </span>
 
-                </li>
-              ))}
-          </ul>
-          <h4>Instructions</h4>
-          <p data-testid="instructions">{card.strInstructions}</p>
+                  </li>
+                ))}
+            </ul>
+            <h4>Instructions</h4>
+            <p className="instructions_details">{card.strInstructions}</p>
 
-          <iframe
-            data-testid="video"
-            title="My Video"
-            width="500"
-            height="500"
-            src={ replaceVideo(card.strYoutube) }
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          />
+            <iframe
+              className="video_details"
+              title="My Video"
+              width="500"
+              height="500"
+              src={ replaceVideo(card.strYoutube) }
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            />
+          </div>
         </div>
       ))}
       <Recomendations />
       <button
+        className="button_details"
         type="button"
         style={ { position: 'fixed', bottom: '0' } }
         data-testid="start-recipe-btn"

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import chef from '../images/chef.png';
+import '../css/Login.css';
 
 const CHARACTER_MIN = 6;
 
@@ -36,17 +38,24 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={ handleClick }>
+    <div className="main">
+      <img src={ chef } alt="chef" className="img_chef" />
+      <h2 className="text_title">Master Chef</h2>
+      <form onSubmit={ handleClick } className="form_login">
         <input
           type="email"
           data-testid="email-input"
           onChange={ validateInput }
+          placeholder="Email"
+          required
         />
         <input
           type="password"
           data-testid="password-input"
           onChange={ validateInput }
+          placeholder="Password"
+          minLength={ CHARACTER_MIN }
+          required
         />
         <button
           type="submit"

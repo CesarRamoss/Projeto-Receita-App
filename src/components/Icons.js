@@ -30,7 +30,7 @@ const Icons = () => {
   return (
     <div>
       <input
-        data-testid="share-btn"
+        className="icon_img"
         type="image"
         src={ shareIcon }
         alt="share"

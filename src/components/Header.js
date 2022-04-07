@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import '../css/Header.css';
 import PropTypes from 'prop-types';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
@@ -75,64 +76,73 @@ const Header = ({ title, search }) => {
   };
 
   return (
-    <div>
-      <input
-        type="image"
-        src={ profileIcon }
-        alt="profile"
-        data-testid="profile-top-btn"
-        onClick={ () => history.push('/profile') }
-      />
-      <span data-testid="page-title">{title}</span>
-      {search
-        ? (
-          <input
-            type="image"
-            src={ SearchIcon }
-            alt="profile"
-            data-testid="search-top-btn"
-            onClick={ toggleSearch }
-          />) : null}
+    <>
+      <div className="header">
+        <input
+          type="image"
+          src={ profileIcon }
+          alt="profile"
+          data-testid="profile-top-btn"
+          onClick={ () => history.push('/profile') }
+        />
+        <span data-testid="page-title">{title}</span>
+        {search
+          ? (
+            <input
+              type="image"
+              src={ SearchIcon }
+              alt="profile"
+              data-testid="search-top-btn"
+              onClick={ toggleSearch }
+            />) : null}
+      </div>
       {displaySearch
       && (
-        <div>
+        <div className="input_search">
           <form onSubmit={ handleSubmit }>
-            <input type="text" data-testid="search-input" onChange={ inputName } />
-            <label htmlFor="ingredient">
-              <input
-                name="food"
-                id="ingredient"
-                type="radio"
-                data-testid="ingredient-search-radio"
-                required="required"
-                onClick={ verifyCheck }
-              />
-              Ingredient
-            </label>
-            <label htmlFor="name">
-              <input
-                name="food"
-                id="name"
-                type="radio"
-                data-testid="name-search-radio"
-                onClick={ verifyCheck }
-              />
-              Name
-            </label>
-            <label htmlFor="letter">
-              <input
-                name="food"
-                id="letter"
-                type="radio"
-                data-testid="first-letter-search-radio"
-                onClick={ verifyCheck }
-              />
-              First letter
-            </label>
-            <button type="submit" data-testid="exec-search-btn">Search</button>
+            <input
+              type="text"
+              placeholder="Type your search"
+              className="form_search"
+              onChange={ inputName }
+            />
+            <div className="inputs_form">
+              <label htmlFor="ingredient">
+                <input
+                  name="food"
+                  id="ingredient"
+                  type="radio"
+                  data-testid="ingredient-search-radio"
+                  required="required"
+                  onClick={ verifyCheck }
+                />
+                Ingredient
+              </label>
+              <label htmlFor="name">
+                <input
+                  name="food"
+                  id="name"
+                  type="radio"
+                  data-testid="name-search-radio"
+                  onClick={ verifyCheck }
+                />
+                Name
+              </label>
+              <label htmlFor="letter">
+                <input
+                  name="food"
+                  id="letter"
+                  type="radio"
+                  data-testid="first-letter-search-radio"
+                  onClick={ verifyCheck }
+                />
+                First letter
+              </label>
+              <button type="submit" data-testid="exec-search-btn">Search</button>
+            </div>
           </form>
         </div>)}
-    </div>
+    </>
   );
 };
 

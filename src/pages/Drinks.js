@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import '../css/Main.css';
 import { Redirect, useHistory } from 'react-router-dom';
 import Buttons from '../components/Buttons';
 import Footer from '../components/Footer';
@@ -24,34 +25,40 @@ const Drinks = () => {
     <div>
       <Header title="Drinks" search />
       <Buttons />
+
       {searchValues != null && searchValues.length === 1
       && <Redirect to={ `/drinks/${searchValues[0].idDrink}` } />}
-
-      {searchValues != null && searchValues.length > 1
+      <div className="card">
+        {searchValues != null && searchValues.length > 1
     && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
-      <div key={ card.idDrink } data-testid={ `${index}-recipe-card` }>
-        <p data-testid={ `${index}-card-name` }>{card.strDrink}</p>
+      <div key={ card.idDrink } className="card_main">
+
         <input
+          className="card_img"
           type="image"
           src={ card.strDrinkThumb }
           alt={ card.strDrink }
           data-testid={ `${index}-card-img` }
-          onClick={ () => history.push(`drinks/${card.idDrink}`) }
+          onClick={ () => history.push(`/drinks/${card.idDrink}`) }
         />
+        <p className="card_text">{card.strDrink}</p>
       </div>
     ))}
-      {searchValues === '' && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
-        <div key={ card.idDrink } data-testid={ `${index}-recipe-card` }>
-          <p data-testid={ `${index}-card-name` }>{card.strDrink}</p>
-          <input
-            type="image"
-            src={ card.strDrinkThumb }
-            alt={ card.strDrink }
-            data-testid={ `${index}-card-img` }
-            onClick={ () => history.push(`drinks/${card.idDrink}`) }
-          />
-        </div>
-      ))}
+        {searchValues === '' && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
+          <div key={ card.idDrink } data-testid={ `${index}-recipe-card` }>
+
+            <input
+              className="card_img"
+              type="image"
+              src={ card.strDrinkThumb }
+              alt={ card.strDrink }
+              data-testid={ `${index}-card-img` }
+              onClick={ () => history.push(`/drinks/${card.idDrink}`) }
+            />
+            <p className="card_text">{card.strDrink}</p>
+          </div>
+        ))}
+      </div>
       {searchValues === null
     && global.alert('Sorry, we haven\'t found any recipes for these filters.')}
       <Footer />

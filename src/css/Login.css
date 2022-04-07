@@ -1,0 +1,45 @@
+.img_chef {
+  width: 50%;
+  background-color: #FFE1A8;
+  border-radius: 50%;
+  margin-bottom: 10%;
+  border:1px solid black;
+}
+
+.text_title {
+  font-family: 'Sacramento', cursive;
+  font-size: 48px;
+  font-weight: 100;
+  text-shadow: 1px 1px 5px #444;
+  color: white;
+}
+
+.form_login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form_login input {
+  text-align: center;
+  width: 279px;
+  height: 40px;
+  border-radius:8px ;
+  font-size: 20px;
+  margin: 10px 0;
+  background-color: #FFE1A8;
+}
+
+.form_login button {
+  width: 136px;
+  height: 40px;
+  border-radius:8px ;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.form_login button:enabled {
+  background-color: #C9CBA3;  
+  font-weight: 600;  
+}

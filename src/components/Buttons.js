@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import '../css/Header.css';
 import { useRouteMatch } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 import { buttonsCategoryDrink, filterByDrinkCategory,
@@ -66,8 +67,9 @@ const Buttons = () => {
     ? renderButtonsFood() : renderButtonsDrink()), []);
 
   return (
-    <div>
+    <div className="header_buttons">
       <button
+        className="button_header"
         type="button"
         data-testid="All-category-filter"
         onClick={ handleByAll }
@@ -76,6 +78,7 @@ const Buttons = () => {
       </button>
       {valueButton.slice(0, NUMBER_BUTTONS).map((item) => (
         <button
+          className="button_header"
           key={ item.strCategory }
           type="button"
           data-testid={ `${item.strCategory}-category-filter` }

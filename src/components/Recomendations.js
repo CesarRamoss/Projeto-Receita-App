@@ -23,8 +23,9 @@ const Recomendations = () => {
     ? recomendedFoods() : renderButtonsDrink()), []);
 
   return (
-    <div>
+    <div className="main_details">
       <h4>Recommended</h4>
+      <br />
       <div
         style={ { display: 'flex', overflow: 'auto' } }
       >
