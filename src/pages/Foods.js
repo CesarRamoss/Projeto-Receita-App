@@ -23,10 +23,12 @@ const Foods = () => {
 
   return (
     <div>
-      <Header title="Foods" search />
-      {searchValues != null && searchValues.length === 1
+      <div className="header_group">
+        <Header title="Foods" search />
+        {searchValues != null && searchValues.length === 1
     && <Redirect to={ `/foods/${searchValues[0].idMeal}` } />}
-      <Buttons />
+        <Buttons />
+      </div>
       <div className="card">
         {searchValues != null && searchValues.length > 1
     && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (

@@ -3,8 +3,14 @@
   flex-wrap: wrap;
   justify-content: center;
   padding-bottom: 55px;
+  padding-top: 120px;
 }
 
+.header_group {
+  position: fixed;
+  background-color: #f8edeb;
+  width: 360px;
+}
 .card_main {
   display: flex;  
   flex-direction: column;

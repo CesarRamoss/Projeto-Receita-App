@@ -83,43 +83,48 @@ const DrinksInProgress = () => {
       { searchValues.map((card) => (
         <div key={ card.idDrink }>
           <img
+            style={ { width: '100%' } }
             data-testid="recipe-photo"
             alt={ card.idDrink }
             src={ card.strDrinkThumb }
           />
-          <p data-testid="recipe-title">{card.strDrink}</p>
-          <p data-testid="recipe-category">{card.strAlcoholic}</p>
-          <Icons />
-          <h4>Ingredients</h4>
-          <ul>
-            {ingredient.filter((item) => item !== null && item.length > 0)
-              .map((ingred, index) => (
-                <div key={ index } id={ `elem${index}` }>
-                  <label htmlFor={ `item${index}` }>
-                    <input
-                      id={ `item${index}` }
-                      className="checkbox"
-                      type="checkbox"
-                      data-testid={ `${index}-ingredient-name-and-measure` }
-                      onClick={ () => putStrike(index) }
-                    />
-                    {ingred}
-                    -
-                    <span data-testid={ `${index}-ingredient-name-and-measure` }>
-                      {measure[index]}
-                    </span>
-                  </label>
-                </div>
-              ))}
-          </ul>
-          <h4>Instructions</h4>
-          <p data-testid="instructions">{card.strInstructions}</p>
+          <div className="main_details">
+            <h2 data-testid="recipe-title">{card.strDrink}</h2>
+            <div className="title_details">
+              <p data-testid="recipe-category">{card.strAlcoholic}</p>
+              <Icons />
+            </div>
+            <h4>Ingredients</h4>
+            <ul>
+              {ingredient.filter((item) => item !== null && item.length > 0)
+                .map((ingred, index) => (
+                  <div key={ index } id={ `elem${index}` }>
+                    <label htmlFor={ `item${index}` }>
+                      <input
+                        id={ `item${index}` }
+                        className="checkbox"
+                        type="checkbox"
+                        data-testid={ `${index}-ingredient-name-and-measure` }
+                        onClick={ () => putStrike(index) }
+                      />
+                      {ingred}
+                      -
+                      <span data-testid={ `${index}-ingredient-name-and-measure` }>
+                        {measure[index]}
+                      </span>
+                    </label>
+                  </div>
+                ))}
+            </ul>
+            <h4>Instructions</h4>
+            <p data-testid="instructions">{card.strInstructions}</p>
 
+          </div>
         </div>
       ))}
       <button
         type="button"
-        style={ { position: 'fixed', bottom: '0' } }
+        className="button_details"
         data-testid="finish-recipe-btn"
         disabled={ toggleButton }
         onClick={ saveRecipes }
@@ -129,6 +134,7 @@ const DrinksInProgress = () => {
 
       </button>
     </div>
+
   );
 };
 

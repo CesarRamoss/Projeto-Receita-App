@@ -23,9 +23,10 @@ const Drinks = () => {
 
   return (
     <div>
-      <Header title="Drinks" search />
-      <Buttons />
-
+      <div className="header_group">
+        <Header title="Drinks" search />
+        <Buttons />
+      </div>
       {searchValues != null && searchValues.length === 1
       && <Redirect to={ `/drinks/${searchValues[0].idDrink}` } />}
       <div className="card">

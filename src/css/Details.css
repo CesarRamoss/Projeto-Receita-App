@@ -1,5 +1,6 @@
 .main_details{
-  padding: 0 10px;
+  padding: 0 10px 24px;  
+  min-height: 278px;
 }
 
 .img_details {
@@ -24,8 +25,8 @@
   margin: 10px 0;
 }
 
-.button_details {
-  width: 100%;
+.button_details:enabled {
+  width: 360px;
   padding: 5px;
   background-color: #C9CBA3;
   font-weight: 600;
@@ -33,6 +34,19 @@
   border: none;
 }
 
+.button_details:disabled {
+  width: 360px;
+  padding: 5px;
+  background-color: #c9c9c965;
+  font-weight: 600;
+  font-style: italic;
+  border: none;
+}
+
 .video_details{
   width: 100%;
+}
+
+input[type=checkbox] {
+  margin-right: 5px;
 }

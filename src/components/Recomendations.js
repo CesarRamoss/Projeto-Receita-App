@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/Recomendation.css';
 import { useRouteMatch, useHistory } from 'react-router-dom';
 import { filterByDrinkName } from '../services/DrinksAPI';
 import { filterByName } from '../services/MealsAPI';
@@ -37,7 +38,7 @@ const Recomendations = () => {
               data-testid={ `${index}-recomendation-card` }
             >
               <input
-                style={ { width: '50vw' } }
+                className="input_recomendation"
                 type="image"
                 alt={ card.idMeal }
                 src={ card.strMealThumb }
@@ -60,7 +61,7 @@ const Recomendations = () => {
               data-testid={ `${index}-recomendation-card` }
             >
               <input
-                style={ { width: '50vw' } }
+                className="input_recomendation"
                 type="image"
                 alt={ card.idDrink }
                 src={ card.strDrinkThumb }
