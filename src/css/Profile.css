@@ -1,0 +1,18 @@
+.email_profile {
+  margin: 20% 0;
+  text-align: center;
+}
+
+.buttons_profile {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.buttons_profile button {
+  background-color: #C9CBA3 ;
+  margin: 5px 0;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}

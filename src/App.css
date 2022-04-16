@@ -8,7 +8,7 @@
 #root {   
   margin:0 auto;
   width: 360px;
-  min-height: 640px;
+  min-height: 100vh;
   background-color: #f8edeb;
 }
 

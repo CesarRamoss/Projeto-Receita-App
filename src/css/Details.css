@@ -32,6 +32,8 @@
   font-weight: 600;
   font-style: italic;
   border: none;
+  position: fixed;
+  bottom: 0;
 }
 
 .button_details:disabled {
@@ -41,6 +43,8 @@
   font-weight: 600;
   font-style: italic;
   border: none;
+  position: fixed;
+  bottom: 0;
 }
 
 .video_details{
@@ -49,4 +53,9 @@
 
 input[type=checkbox] {
   margin-right: 5px;
+}
+
+.container {
+  padding-left: 10px;
+  padding-right: 10px;
 }
