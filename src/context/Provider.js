@@ -5,6 +5,7 @@ import MyContext from './MyContext';
 const Provider = ({ children }) => {
   const [searchValues, setsearchValues] = useState([]);
   const [doneRecipes, setdoneRecipes] = useState([]);
+  const [favoriteRecipes, setfavoriteRecipes] = useState([]);
   const [recipeinprogress, setrecipeinprogress] = useState([]);
   const value = {
     searchValues,
@@ -13,6 +14,8 @@ const Provider = ({ children }) => {
     setdoneRecipes,
     recipeinprogress,
     setrecipeinprogress,
+    favoriteRecipes,
+    setfavoriteRecipes,
   };
 
   return (

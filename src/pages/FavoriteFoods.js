@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../css/Favorite.css';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Icons from '../components/Icons';
+import MyContext from '../context/MyContext';
 
 const FavoriteFoods = () => {
-  const [favorites, setfavorites] = useState([]);
+  const { favoriteRecipes, setfavoriteRecipes } = useContext(MyContext);
   const [originalStorage, setoriginalStorage] = useState([]);
   const history = useHistory();
 
   const renderDetails = () => {
     const favoriteStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    setfavorites(favoriteStorage);
+    setfavoriteRecipes(favoriteStorage);
     setoriginalStorage(favoriteStorage);
   };
 
@@ -20,7 +21,7 @@ const FavoriteFoods = () => {
     originalStorage.map((item) => {
       const resultDrinks = item.idDrink && array.push(item);
       console.log(resultDrinks);
-      return setfavorites(array);
+      return setfavoriteRecipes(array);
     });
   };
 
@@ -29,7 +30,7 @@ const FavoriteFoods = () => {
     originalStorage.map((item) => {
       const resultDrinks = item.idMeal && array.push(item);
       console.log(resultDrinks);
-      return setfavorites(array);
+      return setfavoriteRecipes(array);
     });
   };
 
@@ -37,10 +38,10 @@ const FavoriteFoods = () => {
     ? history.push(`/drinks/${id}`)
     : history.push(`/foods/${id}`));
 
-  // useEffect(() => {
-  //   const favoriteStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  //   setfavorites(favoriteStorage);
-  // }, [JSON.parse(localStorage.getItem('favoriteRecipes'))]);
+  useEffect(() => {
+    const favoriteStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    setoriginalStorage(favoriteStorage);
+  }, [favoriteRecipes]);
 
   useEffect(() => {
     renderDetails();
@@ -78,7 +79,7 @@ const FavoriteFoods = () => {
         </div>
       </section>
       <div className="card container">
-        {favorites.map((item, index) => (
+        {favoriteRecipes.map((item, index) => (
           <div key={ index } className="card_favorite">
             <input
               className="img_favorite"

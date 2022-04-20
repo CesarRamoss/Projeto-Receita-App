@@ -7,7 +7,7 @@ import MyContext from '../context/MyContext';
 
 const Icons = (id) => {
   const [showMessage, setshowMessage] = useState(false);
-  const { searchValues } = useContext(MyContext);
+  const { searchValues, setfavoriteRecipes } = useContext(MyContext);
   const [toggleFav, settoggleFav] = useState(false);
   const { url } = useHistory();
   const ShareTo = () => {
@@ -35,9 +35,10 @@ const Icons = (id) => {
       }
     } else {
       const itens = JSON.parse(localStorage.getItem('favoriteRecipes'));
-      const list = itens.filter((item) => Number(item.idMeal)
+      const list = itens.filter((item) => Number(item.idMeal || item.idDrink)
       !== Number(Object.values(id)));
       localStorage.setItem('favoriteRecipes', JSON.stringify(list));
+      setfavoriteRecipes(list);
     }
     settoggleFav(!toggleFav);
   };

@@ -67,7 +67,7 @@ const FoodsDetails = () => {
             <h2 data-testid="recipe-title">{card.strMeal}</h2>
             <div className="title_details">
               <p data-testid="recipe-category">{card.strCategory}</p>
-              <Icons />
+              <Icons id={ card.idDrink || card.idMeal } />
             </div>
             <h4>Ingredients</h4>
             <ul className="ingredient_details">
