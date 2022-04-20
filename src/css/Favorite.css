@@ -1,0 +1,18 @@
+.card_favorite {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.img_favorite {
+  width: 50%;
+  border-radius: 5px 0 0 5px;
+}
+
+.favorite_details {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+}

@@ -17,6 +17,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 640px;
+  min-height: 100vh;
   background-color: #E26D5C; 
 }

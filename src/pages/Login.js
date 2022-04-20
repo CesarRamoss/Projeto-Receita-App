@@ -34,6 +34,7 @@ const Login = () => {
     localStorage.setItem('mealsToken', JSON.stringify(1));
     localStorage.setItem('cocktailsToken', JSON.stringify(1));
     localStorage.setItem('user', JSON.stringify(inputEmail));
+    localStorage.setItem('favoriteRecipes', JSON.stringify([]));
     history.push('/foods');
   };
 
