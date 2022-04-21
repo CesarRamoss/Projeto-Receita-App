@@ -15,7 +15,7 @@ const Profile = () => {
 
   return (
     <div>
-      <Header title="Profile" />
+      <Header title="Profile" icon />
       <div className="email_profile">
         <h2 data-testid="profile-email">
           {' '}

@@ -42,7 +42,7 @@ const DoneRecipes = () => {
   return (
     <div>
       <section className="header_group">
-        <Header title="Done Recipes" />
+        <Header title="Done Recipes" icon />
         <div className="header_buttons">
           <button
             className="button_header"

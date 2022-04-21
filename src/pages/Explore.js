@@ -8,7 +8,7 @@ const Explore = () => {
 
   return (
     <div>
-      <Header title="Explore" />
+      <Header title="Explore" icon />
       <section className="buttons_profile">
         <button
           data-testid="explore-foods"

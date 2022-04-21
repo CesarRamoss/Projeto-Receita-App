@@ -2,14 +2,16 @@ import React, { useContext, useState } from 'react';
 import '../css/Header.css';
 import PropTypes from 'prop-types';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import profileIcon from '../images/profileIcon.svg';
-import SearchIcon from '../images/searchIcon.svg';
+import profileIcon from '../images/profile.png';
+import Book from '../images/book.png';
+import SearchIcon from '../images/search.png';
 import { filterByIngredient, filterByLetter, filterByName } from '../services/MealsAPI';
 import { filterByDrinkIngredient,
   filterByDrinkLetter, filterByDrinkName } from '../services/DrinksAPI';
 import MyContext from '../context/MyContext';
 
-const Header = ({ title, search }) => {
+/* eslint-disable  */
+const Header = ({ title, search, icon }) => {
   const { setsearchValues } = useContext(MyContext);
   const { url } = useRouteMatch();
   const history = useHistory();
@@ -42,9 +44,10 @@ const Header = ({ title, search }) => {
         : global.alert('Your search must have only 1 (one) character');
 
     default:
-          // console.log('');
+      // console.log('');
     }
   };
+  /* eslint-disable  */
 
   const switchDrinks = () => {
     switch (itemCheck) {
@@ -86,6 +89,11 @@ const Header = ({ title, search }) => {
           onClick={ () => history.push('/profile') }
         />
         <span data-testid="page-title">{title}</span>
+        {icon ? <img          
+          src={ Book }
+          alt="profile"
+        /> : null}
+
         {search
           ? (
             <input
@@ -149,5 +157,6 @@ const Header = ({ title, search }) => {
 Header.propTypes = {
   title: PropTypes.string,
   search: PropTypes.bool,
+  icon: PropTypes.icon,
 }.isRequired;
 export default Header;

@@ -60,3 +60,11 @@ input[type=checkbox] {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.select_nation {
+  height: 40px;
+  width: 360px;
+  text-align: center;
+  font-size: 25px;
+  background-color: #FFE1A8;
+}

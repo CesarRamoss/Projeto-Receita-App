@@ -50,7 +50,7 @@ const FavoriteFoods = () => {
   return (
     <div>
       <section className="header_group">
-        <Header title="Favorite Recipes" />
+        <Header title="Favorite Recipes" icon />
         <div className="header_buttons">
           <button
             className="button_header"
