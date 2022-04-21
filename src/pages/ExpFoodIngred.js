@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import SyncLoader from 'react-spinners/SyncLoader';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MyContext from '../context/MyContext';
@@ -10,10 +11,12 @@ const ExploreFoodsIngredient = () => {
   const LENGTH_ARRAY = 12;
   const history = useHistory();
   const [ingredients, setingredients] = useState([]);
+  const [loading, setloading] = useState(true);
 
   const renderDetails = async () => {
     const itens = await listIngredient();
     setingredients(itens);
+    setloading(false);
   };
 
   const redirectFoodIngred = async (ingredient) => {
@@ -33,18 +36,27 @@ const ExploreFoodsIngredient = () => {
         <Header title="Explore Ingredients" />
       </div>
       <div className="card" style={ { paddingTop: '50px' } }>
-        {ingredients != null && ingredients.slice(0, LENGTH_ARRAY).map((card) => (
-          <div key={ card.idIngredient } className="card_main">
-            <input
-              className="card_img"
-              alt="ingredient"
-              type="image"
-              src={ `https://www.themealdb.com/images/ingredients/${card.strIngredient}-Small.png` }
-              onClick={ () => redirectFoodIngred(card.strIngredient) }
+        {loading
+          ? (
+            <SyncLoader
+              color="#F5A623"
+              loading={ loading }
+              size={ 15 }
+              className="teste"
             />
-            <p className="card_text">{card.strIngredient}</p>
-          </div>
-        ))}
+          )
+          : ingredients != null && ingredients.slice(0, LENGTH_ARRAY).map((card) => (
+            <div key={ card.idIngredient } className="card_main">
+              <input
+                className="card_img"
+                alt="ingredient"
+                type="image"
+                src={ `https://www.themealdb.com/images/ingredients/${card.strIngredient}-Small.png` }
+                onClick={ () => redirectFoodIngred(card.strIngredient) }
+              />
+              <p className="card_text">{card.strIngredient}</p>
+            </div>
+          ))}
       </div>
 
       <Footer />

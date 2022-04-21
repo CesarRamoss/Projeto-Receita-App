@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import SyncLoader from 'react-spinners/SyncLoader';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MyContext from '../context/MyContext';
@@ -10,10 +11,12 @@ const ExpDrinkIngred = () => {
   const LENGTH_ARRAY = 12;
   const history = useHistory();
   const [ingredients, setingredients] = useState([]);
+  const [loading, setloading] = useState(true);
 
   const renderDetails = async () => {
     const itens = await listIngredient();
     setingredients(itens);
+    setloading(false);
   };
 
   const redirectFoodIngred = async (ingredient) => {
@@ -33,20 +36,29 @@ const ExpDrinkIngred = () => {
         <Header title="Explore Ingredients" />
       </div>
       <div className="card" style={ { paddingTop: '50px' } }>
-        {ingredients != null && ingredients.slice(0, LENGTH_ARRAY).map((card) => (
-          <div key={ card.strIngredient1 } className="card_main">
-            <input
-              className="card_img"
-              alt="ingredient"
-              type="image"
-              src={
-                `https://www.thecocktaildb.com/images/ingredients/${card.strIngredient1}-Small.png`
-              }
-              onClick={ () => redirectFoodIngred(card.strIngredient1) }
+        {loading
+          ? (
+            <SyncLoader
+              color="#F5A623"
+              loading={ loading }
+              size={ 15 }
+              className="teste"
             />
-            <p className="card_text">{card.strIngredient1}</p>
-          </div>
-        ))}
+          )
+          : ingredients != null && ingredients.slice(0, LENGTH_ARRAY).map((card) => (
+            <div key={ card.strIngredient1 } className="card_main">
+              <input
+                className="card_img"
+                alt="ingredient"
+                type="image"
+                src={
+                  `https://www.thecocktaildb.com/images/ingredients/${card.strIngredient1}-Small.png`
+                }
+                onClick={ () => redirectFoodIngred(card.strIngredient1) }
+              />
+              <p className="card_text">{card.strIngredient1}</p>
+            </div>
+          ))}
       </div>
 
       <Footer />

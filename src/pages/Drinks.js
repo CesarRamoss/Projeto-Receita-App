@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../css/Main.css';
+import SyncLoader from 'react-spinners/SyncLoader';
 import { Redirect, useHistory } from 'react-router-dom';
 import Buttons from '../components/Buttons';
 import Footer from '../components/Footer';
@@ -10,11 +11,13 @@ import { filterByDrinkName } from '../services/DrinksAPI';
 const Drinks = () => {
   const LENGTH_ARRAY = 12;
   const history = useHistory();
+  const [loading, setloading] = useState(true);
   const { searchValues, setsearchValues, explore, setexplore } = useContext(MyContext);
 
   const renderInitialDrinks = async () => {
     const result = await filterByDrinkName('');
     setsearchValues(result);
+    setloading(false);
   };
 
   useEffect(() => {
@@ -31,7 +34,16 @@ const Drinks = () => {
       {searchValues != null && searchValues.length === 1
       && <Redirect to={ `/drinks/${searchValues[0].idDrink}` } />}
       <div className="card">
-        {searchValues != null && searchValues.length > 1
+        {loading
+          ? (
+            <SyncLoader
+              color="#F5A623"
+              loading={ loading }
+              size={ 15 }
+              className="teste"
+            />
+          )
+          : searchValues != null && searchValues.length > 1
     && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
       <div key={ card.idDrink } className="card_main">
 

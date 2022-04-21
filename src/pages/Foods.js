@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../css/Main.css';
+import SyncLoader from 'react-spinners/SyncLoader';
 import { Redirect, useHistory } from 'react-router-dom';
 import Buttons from '../components/Buttons';
 import Footer from '../components/Footer';
@@ -11,10 +12,11 @@ const Foods = () => {
   const LENGTH_ARRAY = 12;
   const history = useHistory();
   const { searchValues, setsearchValues, explore, setexplore } = useContext(MyContext);
-
+  const [loading, setloading] = useState(true);
   const renderInitialFoods = async () => {
     const result = await filterByName('');
     setsearchValues(result);
+    setloading(false);
   };
 
   useEffect(() => {
@@ -31,7 +33,16 @@ const Foods = () => {
         <Buttons />
       </div>
       <div className="card">
-        {searchValues != null && searchValues.length > 1
+        {loading
+          ? (
+            <SyncLoader
+              color="#F5A623"
+              loading={ loading }
+              size={ 15 }
+              className="teste"
+            />
+          )
+          : searchValues != null && searchValues.length > 1
     && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
       <div
         className="card_main"
