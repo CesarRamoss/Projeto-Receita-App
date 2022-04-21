@@ -10,7 +10,7 @@ import { filterByName } from '../services/MealsAPI';
 const Foods = () => {
   const LENGTH_ARRAY = 12;
   const history = useHistory();
-  const { searchValues, setsearchValues } = useContext(MyContext);
+  const { searchValues, setsearchValues, explore, setexplore } = useContext(MyContext);
 
   const renderInitialFoods = async () => {
     const result = await filterByName('');
@@ -18,7 +18,8 @@ const Foods = () => {
   };
 
   useEffect(() => {
-    if (searchValues.length === 0) renderInitialFoods();
+    if (explore !== 'food')renderInitialFoods();
+    setexplore('');
   }, []);
 
   return (
@@ -34,7 +35,7 @@ const Foods = () => {
     && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
       <div
         className="card_main"
-        key={ card.idMeal }
+        key={ index }
         data-testid={ `${index}-recipe-card` }
       >
 
@@ -58,7 +59,7 @@ const Foods = () => {
 
         {searchValues === ''
        && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
-         <div key={ card.idMeal } data-testid={ `${index}-recipe-card` }>
+         <div key={ index } data-testid={ `${index}-recipe-card` }>
 
            <input
              className="card_img"

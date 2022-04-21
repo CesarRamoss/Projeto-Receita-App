@@ -10,7 +10,7 @@ import { filterByDrinkName } from '../services/DrinksAPI';
 const Drinks = () => {
   const LENGTH_ARRAY = 12;
   const history = useHistory();
-  const { searchValues, setsearchValues } = useContext(MyContext);
+  const { searchValues, setsearchValues, explore, setexplore } = useContext(MyContext);
 
   const renderInitialDrinks = async () => {
     const result = await filterByDrinkName('');
@@ -18,7 +18,8 @@ const Drinks = () => {
   };
 
   useEffect(() => {
-    renderInitialDrinks();
+    if (explore !== 'drink')renderInitialDrinks();
+    setexplore('');
   }, []);
 
   return (

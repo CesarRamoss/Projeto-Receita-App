@@ -6,7 +6,7 @@ import MyContext from '../context/MyContext';
 import { filterByIngredient, listIngredient } from '../services/MealsAPI';
 
 const ExploreFoodsIngredient = () => {
-  const { setsearchValues } = useContext(MyContext);
+  const { setsearchValues, setexplore } = useContext(MyContext);
   const LENGTH_ARRAY = 12;
   const history = useHistory();
   const [ingredients, setingredients] = useState([]);
@@ -19,6 +19,7 @@ const ExploreFoodsIngredient = () => {
   const redirectFoodIngred = async (ingredient) => {
     const result = await filterByIngredient(ingredient);
     setsearchValues(result);
+    setexplore('food');
     history.push('/foods');
   };
 

@@ -47,4 +47,11 @@ export const randomDrink = async () => {
   return drinks;
 };
 
+export const listIngredient = async () => {
+  const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
+  const { drinks } = await response.json();
+  console.log(drinks);
+  return drinks;
+};
+
 export default filterByDrinkIngredient;

@@ -7,6 +7,8 @@ const Provider = ({ children }) => {
   const [doneRecipes, setdoneRecipes] = useState([]);
   const [favoriteRecipes, setfavoriteRecipes] = useState([]);
   const [recipeinprogress, setrecipeinprogress] = useState([]);
+  const [explore, setexplore] = useState('');
+
   const value = {
     searchValues,
     setsearchValues,
@@ -16,6 +18,9 @@ const Provider = ({ children }) => {
     setrecipeinprogress,
     favoriteRecipes,
     setfavoriteRecipes,
+    explore,
+    setexplore,
+
   };
 
   return (
