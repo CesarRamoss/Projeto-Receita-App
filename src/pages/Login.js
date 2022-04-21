@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import chef from '../images/chef.png';
 import '../css/Login.css';
+import 'animate.css';
 
 const CHARACTER_MIN = 6;
 
@@ -41,8 +42,12 @@ const Login = () => {
 
   return (
     <div className="main">
-      <img src={ chef } alt="chef" className="img_chef" />
-      <h2 className="text_title">Master Chef</h2>
+      <img
+        src={ chef }
+        alt="chef"
+        className="img_chef animate__animated animate__flipInX"
+      />
+      <h2 className="text_title animate__animated animate__zoomIn">Master Chef</h2>
       <form onSubmit={ handleClick } className="form_login">
         <input
           type="email"

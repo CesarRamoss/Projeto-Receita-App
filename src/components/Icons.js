@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
-import favoriteIcon from '../images/whiteHeartIcon.svg';
-import favoriteIconBlack from '../images/blackHeartIcon.svg';
+import favoriteIcon from '../images/heart.png';
+import favoriteIconBlack from '../images/redheart.png';
 import MyContext from '../context/MyContext';
 
 const Icons = (id) => {

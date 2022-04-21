@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import '../css/Header.css';
+import 'animate.css';
 import PropTypes from 'prop-types';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import profileIcon from '../images/profile.png';
@@ -96,7 +97,7 @@ const Header = ({ title, search, icon }) => {
 
         {search
           ? (
-            <input
+            <input            
               type="image"
               src={ SearchIcon }
               alt="profile"
@@ -106,7 +107,7 @@ const Header = ({ title, search, icon }) => {
       </div>
       {displaySearch
       && (
-        <div className="input_search">
+        <div className="input_search animate__animated animate__fadeIn">
           <form onSubmit={ handleSubmit }>
             <input
               type="text"
