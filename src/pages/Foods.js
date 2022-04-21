@@ -18,7 +18,7 @@ const Foods = () => {
   };
 
   useEffect(() => {
-    renderInitialFoods();
+    if (searchValues.length === 0) renderInitialFoods();
   }, []);
 
   return (

@@ -47,4 +47,10 @@ export const randomFoods = async () => {
   return meals;
 };
 
+export const listIngredient = async () => {
+  const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
+  const { meals } = await response.json();
+  return meals;
+};
+
 export default filterByIngredient;
