@@ -29,7 +29,6 @@ Nesse projeto foi usado:
 ### Protótipo do projeto
 
 Você pode acessar um protótipo no link abaixo:
-
-https://www.figma.com/file/d5YalEcxhNtCXsOVMPIiR6/Recipes-App?node-id=0%3A1
+[Figma](https://www.figma.com/file/d5YalEcxhNtCXsOVMPIiR6/Recipes-App?node-id=0%3A1)
 
 
