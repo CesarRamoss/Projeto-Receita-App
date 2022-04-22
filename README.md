@@ -31,4 +31,6 @@ Nesse projeto foi usado:
 Você pode acessar um protótipo no link abaixo:
 [Figma](https://www.figma.com/file/d5YalEcxhNtCXsOVMPIiR6/Recipes-App?node-id=0%3A1)
 
+[Paleta_de_Cores](https://coolors.co/palette/c9cba3-ffe1a8-e26d5c-723d46-472d30)
+
 
