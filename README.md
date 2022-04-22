@@ -3,7 +3,7 @@
 
 Este projeto foi desenvolvido individualmente com o intuito de me desafiar referente ao conteúdo estudado em todo o bloco de Front End da Trybe 🚀
 
-O app de receitas utiliza como base a API [TheMealDB](https://www.themealdb.com/) e pode ser utilizado no link: 
+O app de receitas utiliza como base a API [TheMealDB](https://www.themealdb.com/) e pode ser utilizado no link: [App_de_Receitas](https://app-receitas.netlify.app/)
 
 ---
 

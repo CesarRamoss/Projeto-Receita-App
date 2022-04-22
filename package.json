@@ -29,10 +29,8 @@
     "react-spinners": "^0.11.0",
     "websocket-extensions": ">=0.1.4"
   },
-  "homepage": "https://CesarRamoss.github.io/Projeto-Receita-App",
-  "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+  
+  "scripts": {    
     "cy": "cypress run",
     "cy:open": "cypress open",
     "start": "react-scripts start",
