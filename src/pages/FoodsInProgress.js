@@ -84,14 +84,13 @@ const FoodsInProgress = () => {
         <div key={ card.idMeal }>
           <img
             style={ { width: '100%' } }
-            data-testid="recipe-photo"
             alt={ card.idMeal }
             src={ card.strMealThumb }
           />
           <div className="main_details">
-            <h2 data-testid="recipe-title">{card.strMeal}</h2>
+            <h2>{card.strMeal}</h2>
             <div className="title_details">
-              <p data-testid="recipe-category">{card.strCategory}</p>
+              <p>{card.strCategory}</p>
               <Icons id={ card.idDrink || card.idMeal } />
             </div>
             <h4>Ingredients</h4>
@@ -104,12 +103,11 @@ const FoodsInProgress = () => {
                         id={ `item${index}` }
                         className="checkbox"
                         type="checkbox"
-                        data-testid={ `${index}-ingredient-name-and-measure` }
                         onClick={ () => putStrike(index) }
                       />
                       {ingred}
                       -
-                      <span data-testid={ `${index}-ingredient-name-and-measure` }>
+                      <span>
                         {measure[index]}
                       </span>
                     </label>
@@ -117,7 +115,7 @@ const FoodsInProgress = () => {
                 ))}
             </ul>
             <h4>Instructions</h4>
-            <p data-testid="instructions">{card.strInstructions}</p>
+            <p>{card.strInstructions}</p>
 
           </div>
         </div>
@@ -125,7 +123,6 @@ const FoodsInProgress = () => {
       <button
         type="button"
         className="button_details"
-        data-testid="finish-recipe-btn"
         disabled={ toggleButton }
         onClick={ saveRecipes }
       >

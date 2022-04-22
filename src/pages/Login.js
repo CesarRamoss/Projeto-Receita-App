@@ -51,22 +51,19 @@ const Login = () => {
       <form onSubmit={ handleClick } className="form_login">
         <input
           type="email"
-          data-testid="email-input"
           onChange={ validateInput }
           placeholder="Email"
           required
         />
         <input
           type="password"
-          data-testid="password-input"
           onChange={ validateInput }
           placeholder="Password"
-          minLength={ CHARACTER_MIN }
+          minLength={ CHARACTER_MIN + 1 }
           required
         />
         <button
           type="submit"
-          data-testid="login-submit-btn"
           disabled={ button }
         >
           Entrar

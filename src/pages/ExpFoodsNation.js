@@ -56,19 +56,16 @@ const ExpFoodsNation = () => {
     <div
       className="card_main"
       key={ index }
-      data-testid={ `${index}-recipe-card` }
     >
       <input
         className="card_img"
         type="image"
         src={ card.strMealThumb }
         alt={ card.strMeal }
-        data-testid={ `${index}-card-img` }
         onClick={ () => history.push(`/foods/${card.idMeal}`) }
       />
       <p
         className="card_text"
-        data-testid={ `${index}-card-name` }
       >
         {card.strMeal}
 

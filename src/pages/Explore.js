@@ -11,7 +11,6 @@ const Explore = () => {
       <Header title="Explore" icon />
       <section className="buttons_profile">
         <button
-          data-testid="explore-foods"
           type="button"
           onClick={ () => history.push('/explore/foods') }
         >
@@ -19,7 +18,6 @@ const Explore = () => {
 
         </button>
         <button
-          data-testid="explore-drinks"
           type="button"
           onClick={ () => history.push('/explore/drinks') }
         >

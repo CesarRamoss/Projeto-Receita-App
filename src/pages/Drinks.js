@@ -21,7 +21,11 @@ const Drinks = () => {
   };
 
   useEffect(() => {
-    if (explore !== 'drink')renderInitialDrinks();
+    if (explore !== 'drink') {
+      renderInitialDrinks();
+    } else {
+      setloading(false);
+    }
     setexplore('');
   }, []);
 
@@ -36,37 +40,37 @@ const Drinks = () => {
       <div className="card">
         {loading
           ? (
-            <SyncLoader
-              color="#F5A623"
-              loading={ loading }
-              size={ 15 }
-              className="teste"
-            />
+            <div className="loading">
+              <SyncLoader
+                color="#F5A623"
+                loading={ loading }
+                size={ 15 }
+                className="teste"
+              />
+            </div>
           )
           : searchValues != null && searchValues.length > 1
     && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
-      <div key={ card.idDrink } className="card_main">
+      <div key={ index } className="card_main">
 
         <input
           className="card_img"
           type="image"
           src={ card.strDrinkThumb }
           alt={ card.strDrink }
-          data-testid={ `${index}-card-img` }
           onClick={ () => history.push(`/drinks/${card.idDrink}`) }
         />
         <p className="card_text">{card.strDrink}</p>
       </div>
     ))}
         {searchValues === '' && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
-          <div key={ card.idDrink } data-testid={ `${index}-recipe-card` }>
+          <div key={ index }>
 
             <input
               className="card_img"
               type="image"
               src={ card.strDrinkThumb }
               alt={ card.strDrink }
-              data-testid={ `${index}-card-img` }
               onClick={ () => history.push(`/drinks/${card.idDrink}`) }
             />
             <p className="card_text">{card.strDrink}</p>

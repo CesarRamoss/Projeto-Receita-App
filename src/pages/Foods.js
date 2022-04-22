@@ -20,7 +20,11 @@ const Foods = () => {
   };
 
   useEffect(() => {
-    if (explore !== 'food')renderInitialFoods();
+    if (explore !== 'food') {
+      renderInitialFoods();
+    } else {
+      setloading(false);
+    }
     setexplore('');
   }, []);
 
@@ -35,19 +39,19 @@ const Foods = () => {
       <div className="card">
         {loading
           ? (
-            <SyncLoader
-              color="#F5A623"
-              loading={ loading }
-              size={ 15 }
-              className="teste"
-            />
+            <div className="loading">
+              <SyncLoader
+                color="#F5A623"
+                loading={ loading }
+                size={ 15 }
+              />
+            </div>
           )
           : searchValues != null && searchValues.length > 1
     && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
       <div
         className="card_main"
         key={ index }
-        data-testid={ `${index}-recipe-card` }
       >
 
         <input
@@ -55,12 +59,10 @@ const Foods = () => {
           type="image"
           src={ card.strMealThumb }
           alt={ card.strMeal }
-          data-testid={ `${index}-card-img` }
           onClick={ () => history.push(`/foods/${card.idMeal}`) }
         />
         <p
           className="card_text"
-          data-testid={ `${index}-card-name` }
         >
           {card.strMeal}
 
@@ -70,18 +72,16 @@ const Foods = () => {
 
         {searchValues === ''
        && searchValues.slice(0, LENGTH_ARRAY).map((card, index) => (
-         <div key={ index } data-testid={ `${index}-recipe-card` }>
+         <div key={ index }>
 
            <input
              className="card_img"
              type="image"
              src={ card.strMealThumb }
              alt={ card.strMeal }
-             data-testid={ `${index}-card-img` }
            />
            <p
              className="card_text"
-             data-testid={ `${index}-card-name` }
            >
              {card.strMeal}
 

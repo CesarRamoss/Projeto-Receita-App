@@ -17,7 +17,7 @@ const Profile = () => {
     <div>
       <Header title="Profile" icon />
       <div className="email_profile">
-        <h2 data-testid="profile-email">
+        <h2>
           {' '}
           {emailStorage.email}
           {' '}
@@ -26,7 +26,6 @@ const Profile = () => {
       <section className="buttons_profile">
         <button
           type="button"
-          data-testid="profile-done-btn"
           onClick={ () => history.push('/done-recipes') }
         >
           Done Recipes
@@ -34,7 +33,6 @@ const Profile = () => {
         </button>
         <button
           type="button"
-          data-testid="profile-favorite-btn"
           onClick={ () => history.push('/favorite-recipes') }
         >
           Favorite Recipes
@@ -42,7 +40,6 @@ const Profile = () => {
         </button>
         <button
           type="button"
-          data-testid="profile-logout-btn"
           onClick={ handleLogout }
         >
           Logout

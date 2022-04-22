@@ -31,6 +31,16 @@
   background-color: #FFE1A8;
 }
 
+.form_login input[type=email]:not(:placeholder-shown):invalid {
+  color: red;
+  outline-color: red;
+}
+
+.form_login input[type=password]:not(:placeholder-shown):invalid {
+  color: red;
+  outline-color: red;
+}
+
 .form_login button {
   width: 136px;
   height: 40px;

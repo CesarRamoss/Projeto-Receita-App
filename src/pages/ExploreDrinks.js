@@ -11,7 +11,6 @@ const ExploreDrinks = () => {
   const fetchDrink = async () => {
     const { drinks } = await randomDrink();
     setdrinkRandom(drinks);
-    console.log(drinks);
   };
 
   useEffect(() => {
@@ -24,7 +23,6 @@ const ExploreDrinks = () => {
       <section className="buttons_profile">
         <button
           type="button"
-          data-testid="explore-by-ingredient"
           onClick={ () => history.push('/explore/drinks/ingredients') }
         >
           By Ingredient
@@ -33,7 +31,6 @@ const ExploreDrinks = () => {
 
         <button
           type="button"
-          data-testid="explore-surprise"
           onClick={
             () => history.push(`/drinks/${drinkRandom[0].idDrink}`)
           }

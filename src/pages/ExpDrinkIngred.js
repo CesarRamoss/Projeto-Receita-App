@@ -38,12 +38,14 @@ const ExpDrinkIngred = () => {
       <div className="card" style={ { paddingTop: '50px' } }>
         {loading
           ? (
-            <SyncLoader
-              color="#F5A623"
-              loading={ loading }
-              size={ 15 }
-              className="teste"
-            />
+            <div className="loading">
+              <SyncLoader
+                color="#F5A623"
+                loading={ loading }
+                size={ 15 }
+                className="teste"
+              />
+            </div>
           )
           : ingredients != null && ingredients.slice(0, LENGTH_ARRAY).map((card) => (
             <div key={ card.strIngredient1 } className="card_main">

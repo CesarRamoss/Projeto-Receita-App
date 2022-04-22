@@ -57,9 +57,9 @@ const DrinksDetails = () => {
             src={ card.strDrinkThumb }
           />
           <div className="main_details">
-            <h2 data-testid="recipe-title">{card.strDrink}</h2>
+            <h2>{card.strDrink}</h2>
             <div className="title_details">
-              <p data-testid="recipe-category">{card.strAlcoholic}</p>
+              <p>{card.strAlcoholic}</p>
               <Icons id={ card.idDrink || card.idMeal } />
             </div>
             <h4>Ingredients</h4>
@@ -68,12 +68,11 @@ const DrinksDetails = () => {
                 .map((ingred, index) => (
                   <li
                     key={ index }
-                    data-testid={ `${index}-ingredient-name-and-measure` }
                   >
                     {ingred}
                     {' '}
                     -
-                    <span data-testid={ `${index}-ingredient-name-and-measure` }>
+                    <span>
                       {measure[index]}
                     </span>
 
@@ -90,7 +89,6 @@ const DrinksDetails = () => {
         className="button_details"
         type="button"
         style={ { position: 'fixed', bottom: '0' } }
-        data-testid="start-recipe-btn"
         onClick={ () => history.push(`/drinks/${params.id}/in-progress`) }
       >
         Start Recipe

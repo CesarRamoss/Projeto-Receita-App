@@ -11,7 +11,6 @@ const ExploreFoods = () => {
   const fetchFood = async () => {
     const { meals } = await randomFoods();
     setfoodRandom(meals);
-    console.log(meals);
   };
 
   useEffect(() => {
@@ -25,7 +24,6 @@ const ExploreFoods = () => {
       <section className="buttons_profile">
         <button
           type="button"
-          data-testid="explore-by-ingredient"
           onClick={ () => history.push('/explore/foods/ingredients') }
         >
           By Ingredient
@@ -33,7 +31,6 @@ const ExploreFoods = () => {
         </button>
         <button
           type="button"
-          data-testid="explore-by-nationality"
           onClick={ () => history.push('/explore/foods/nationalities') }
         >
           By Nationality
@@ -41,7 +38,6 @@ const ExploreFoods = () => {
         </button>
         <button
           type="button"
-          data-testid="explore-surprise"
           onClick={
             () => history.push(`/foods/${foodRandom[0].idMeal}`)
           }
