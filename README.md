@@ -7,6 +7,9 @@ O app de receitas utiliza como base a API [TheMealDB](https://www.themealdb.com/
 
 ---
 
+https://user-images.githubusercontent.com/91343828/166744084-3e453b9a-43de-4abb-8226-081e3a459062.mp4
+
+
 # Habilidades
 
 Nesse projeto foi usado:
